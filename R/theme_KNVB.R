@@ -1,3 +1,15 @@
+#' @title KNVB ggplot2 theme
+#'
+#' @description Custom ggplot2 theme used in all KNVB figures created by KNVB research department
+#'
+#' @param base_size base font size, given in pts.
+#' @param base_family base font family
+#'
+#' @importFrom ggplot2 %+replace%
+#'
+#' @export
+#'
+
 theme_knvb <- function(base_size = 12,
                        base_family = "Arial"){
 
@@ -35,7 +47,7 @@ theme_knvb <- function(base_size = 12,
       legend.background = ggplot2::element_blank(),
 
       legend.key = ggplot2::element_rect(fill = "transparent",
-                                color = NA),
+                                         color = NA),
 
       legend.title.align = 1,
       legend.box.just = "left",
