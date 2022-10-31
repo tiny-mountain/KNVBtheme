@@ -1,13 +1,21 @@
 Package: KNVBtheme
 Title: Unofficial KNVB theme for ggplot2
 Version: 0.0.0.9000
-Authors@R: 
-    person("Tom", "Bergkamp", , "tom.bergkamp@knvb.nl", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+Authors@R: c(
+    person(given = "Tom", 
+           family = "Bergkamp",
+           email = "tom.bergkamp@knvb.nl",
+           role = c("aut", "cre")),
+    person(given = "Jan", 
+           family = "Verbeek",
+           email = "jan.verbeek@knvb.nl",
+           role = c("ctb"))
+           )
 Description: Customize plots in R with unofficial KNVB theme by providing KNVB 
     color palette, fonts and general style.
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1
+Imports: 
+    ggplot2
