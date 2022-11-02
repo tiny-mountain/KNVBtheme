@@ -11,10 +11,10 @@
 #'
 
 theme_knvb <- function(base_size = 12,
-                       ...){
+                       base_family = "Arial"){
 
   ggplot2::theme_grey(base_size = base_size,
-                      ...) %+replace%
+                      base_family = base_family) %+replace%
     ggplot2::theme(
 
       # add margin around plot
