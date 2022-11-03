@@ -4,7 +4,7 @@
 \alias{theme_knvb}
 \title{KNVB ggplot2 theme}
 \usage{
-theme_knvb(base_size = 12, base_family = "Arial")
+theme_knvb(base_size = 12, base_family = "Baron_Book")
 }
 \arguments{
 \item{base_size}{base font size, given in pts.}
