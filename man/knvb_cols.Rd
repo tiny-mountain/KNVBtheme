@@ -3,7 +3,7 @@
 \docType{data}
 \name{knvb_cols}
 \alias{knvb_cols}
-\title{Dataframe with KNVB colors used in palette}
+\title{Dataframe with KNVB colors used in palette functions}
 \format{
 \subsection{\code{knvb_cols}}{
 
@@ -18,6 +18,6 @@
 knvb_cols
 }
 \description{
-Dataframe with KNVB colors used in palette
+Dataframe with KNVB colors used in palette functions
 }
 \keyword{datasets}
