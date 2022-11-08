@@ -1,20 +1,48 @@
 #' @title KNVB ggplot2 theme
 #'
-#' @description Custom ggplot2 theme used in all KNVB figures created by KNVB research department
+#' @description Custom ggplot2 theme used in all KNVB figures. Created by KNVB
+#'   research department.
 #'
 #' @param base_size base font size, given in pts.
 #' @param base_family base font family
+#' @param ... potential further arguments passed to [theme_grey()]
 #'
 #' @importFrom ggplot2 %+replace%
+#'
+#' @examples
+#' library(ggplot2)
+#'
+#' mtcars2 <- within(mtcars, {
+#'   vs <- factor(vs, labels = c("V-shaped", "Straight"))
+#'   am <- factor(am, labels = c("Automatic", "Manual"))
+#'   cyl  <- factor(cyl)
+#'   gear <- factor(gear)
+#' })
+#'
+#' p1 <- ggplot(mtcars2) +
+#'   geom_point(aes(x = wt, y = mpg, colour = gear)) +
+#'   labs(
+#'     title = "Fuel economy declines as weight increases",
+#'     subtitle = "(1973-74)",
+#'     caption = "Data from the 1974 Motor Trend US magazine.",
+#'     tag = "Figure 1",
+#'     x = "Weight (1000 lbs)",
+#'     y = "Fuel economy (mpg)",
+#'     colour = "Gears"
+#'   )
+#'
+#' p1 + theme_knvb()
 #'
 #' @export
 #'
 
 theme_knvb <- function(base_size = 12,
-                       base_family = "Baron_Book"){
+                       base_family = "Baron_Book",
+                       ...){
 
   ggplot2::theme_grey(base_size = base_size,
-                      base_family = base_family) %+replace%
+                      base_family = base_family,
+                      ...) %+replace%
     ggplot2::theme(
 
       # add margin around plot

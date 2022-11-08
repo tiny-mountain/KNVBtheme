@@ -4,13 +4,41 @@
 \alias{theme_knvb}
 \title{KNVB ggplot2 theme}
 \usage{
-theme_knvb(base_size = 12, base_family = "Baron_Book")
+theme_knvb(base_size = 12, base_family = "Baron_Book", ...)
 }
 \arguments{
 \item{base_size}{base font size, given in pts.}
 
 \item{base_family}{base font family}
+
+\item{...}{potential further arguments passed to \code{\link[=theme_grey]{theme_grey()}}}
 }
 \description{
-Custom ggplot2 theme used in all KNVB figures created by KNVB research department
+Custom ggplot2 theme used in all KNVB figures. Created by KNVB
+research department.
+}
+\examples{
+library(ggplot2)
+
+mtcars2 <- within(mtcars, {
+  vs <- factor(vs, labels = c("V-shaped", "Straight"))
+  am <- factor(am, labels = c("Automatic", "Manual"))
+  cyl  <- factor(cyl)
+  gear <- factor(gear)
+})
+
+p1 <- ggplot(mtcars2) +
+  geom_point(aes(x = wt, y = mpg, colour = gear)) +
+  labs(
+    title = "Fuel economy declines as weight increases",
+    subtitle = "(1973-74)",
+    caption = "Data from the 1974 Motor Trend US magazine.",
+    tag = "Figure 1",
+    x = "Weight (1000 lbs)",
+    y = "Fuel economy (mpg)",
+    colour = "Gears"
+  )
+
+p1 + theme_knvb()
+
 }
