@@ -2,19 +2,31 @@
 % Please edit documentation in R/knvb.R
 \name{theme_knvb}
 \alias{theme_knvb}
-\title{KNVB ggplot2 theme}
+\title{KNVB theme}
 \usage{
-theme_knvb(base_size = 12, base_family = "Baron_Book", ...)
+theme_knvb(
+           base_size = 12,
+           base_family = "Baron_Book",
+           y_grid = T,
+           x_grid = T,
+           ...
+)
 }
 \arguments{
 \item{base_size}{base font size, given in pts.}
 
 \item{base_family}{base font family}
 
+\item{y_grid}{logical. Indicate whether you want to draw major and minor
+y-axis grid lines}
+
+\item{x_grid}{logical. Indicate whether you want to draw major and minor
+x-axis grid lines}
+
 \item{...}{potential further arguments passed to \code{\link[=theme_grey]{theme_grey()}}}
 }
 \description{
-Custom ggplot2 theme used in all KNVB figures. Created by KNVB
+Custom \link{ggplot2} theme used in all KNVB figures. Created by KNVB
 research department.
 }
 \examples{
@@ -33,7 +45,6 @@ p1 <- ggplot(mtcars2) +
     title = "Fuel economy declines as weight increases",
     subtitle = "(1973-74)",
     caption = "Data from the 1974 Motor Trend US magazine.",
-    tag = "Figure 1",
     x = "Weight (1000 lbs)",
     y = "Fuel economy (mpg)",
     colour = "Gears"

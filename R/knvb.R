@@ -1,10 +1,22 @@
-#' @title KNVB ggplot2 theme
+#' @title KNVB theme
 #'
-#' @description Custom ggplot2 theme used in all KNVB figures. Created by KNVB
+#' @description Custom [ggplot2] theme used in all KNVB figures. Created by KNVB
 #'   research department.
+#' @usage
+#' theme_knvb(
+#'            base_size = 12,
+#'            base_family = "Baron_Book",
+#'            y_grid = T,
+#'            x_grid = T,
+#'            ...
+#' )
 #'
 #' @param base_size base font size, given in pts.
 #' @param base_family base font family
+#' @param y_grid logical. Indicate whether you want to draw major and minor
+#'   y-axis grid lines
+#' @param x_grid logical. Indicate whether you want to draw major and minor
+#'   x-axis grid lines
 #' @param ... potential further arguments passed to [theme_grey()]
 #'
 #' @importFrom ggplot2 %+replace%
@@ -25,7 +37,6 @@
 #'     title = "Fuel economy declines as weight increases",
 #'     subtitle = "(1973-74)",
 #'     caption = "Data from the 1974 Motor Trend US magazine.",
-#'     tag = "Figure 1",
 #'     x = "Weight (1000 lbs)",
 #'     y = "Fuel economy (mpg)",
 #'     colour = "Gears"
@@ -38,11 +49,13 @@
 
 theme_knvb <- function(base_size = 12,
                        base_family = "Baron_Book",
+                       y_grid = T,
+                       x_grid = T,
                        ...){
 
-  ggplot2::theme_grey(base_size = base_size,
-                      base_family = base_family,
-                      ...) %+replace%
+  ret <- ggplot2::theme_grey(base_size = base_size,
+                             base_family = base_family,
+                             ...) %+replace%
     ggplot2::theme(
 
       # add margin around plot
@@ -62,10 +75,14 @@ theme_knvb <- function(base_size = 12,
       axis.ticks = ggplot2::element_blank(),
 
       # modify the bottom margins of the title and subtitle
-      plot.title = ggplot2::element_text(size = ggplot2::rel(2), colour = "#3C3C3C",
+      plot.title = ggplot2::element_text(family = "Baron_Bold",
+                                         size = ggplot2::rel(2),
+                                         colour = "#3C3C3C",
                                          hjust = 0,
                                          margin = ggplot2::margin(b = 10)),
-      plot.subtitle = ggplot2::element_text(size = ggplot2::rel(1.5), colour = "#A0A0A3",
+      plot.subtitle = ggplot2::element_text(family = "Baron_Book",
+                                            size = ggplot2::rel(1.5),
+                                            colour = "#A0A0A3",
                                             hjust = 0,
                                             margin = ggplot2::margin(b = 10)),
 
@@ -82,8 +99,10 @@ theme_knvb <- function(base_size = 12,
       legend.box.spacing =  grid::unit(0.25, "cm"),
       legend.spacing.x =  grid::unit(0.25, "cm"),
 
-      legend.text = ggplot2::element_text(size = ggplot2::rel(.9), color = "#3C3C3C"),
-      legend.title = ggplot2::element_text(size = ggplot2::rel(1), color = "#3C3C3C"),
+      legend.text = ggplot2::element_text(size = ggplot2::rel(.9),
+                                          color = "#3C3C3C"),
+      legend.title = ggplot2::element_text(size = ggplot2::rel(1),
+                                           color = "#3C3C3C"),
       # # #legend.text.align = 1,
       # legend.text = element_text(lineheight = 10,
       #                             size = rel(.8),
@@ -98,15 +117,32 @@ theme_knvb <- function(base_size = 12,
       strip.placement = "outside",
 
       # Adjust text size and axis title position
-      axis.title.x = ggplot2::element_text(size = ggplot2::rel(1.2),
+      axis.title.x = ggplot2::element_text(family = "Baron_Bold",
+                                           size = ggplot2::rel(1.2),
                                            colour = "#3C3C3C",
                                            margin = ggplot2::margin(t = 5)),
-      axis.title.y = ggplot2::element_text(size = ggplot2::rel(1.2),
+      axis.title.y = ggplot2::element_text(family = "Baron_Bold",
+                                           size = ggplot2::rel(1.2),
                                            colour = "#3C3C3C",
                                            margin = ggplot2::margin(r = 10),
                                            angle = 90),
-      axis.text = ggplot2::element_text(size = ggplot2::rel(.9), colour = "#3C3C3C")
-    )
+      axis.text = ggplot2::element_text(size = ggplot2::rel(.9), colour = "#3C3C3C"))
 
+
+
+  if(y_grid == F){
+    ret <- ret + ggplot2::theme(
+      panel.grid.major.y = ggplot2::element_blank(),
+      panel.grid.minor.y = ggplot2::element_blank()
+    )
+  }
+  if(x_grid == F){
+    ret <- ret + ggplot2::theme(
+      panel.grid.major.x = ggplot2::element_blank(),
+      panel.grid.minor.x = ggplot2::element_blank()
+    )
+  }
+
+  return(ret)
 }
 

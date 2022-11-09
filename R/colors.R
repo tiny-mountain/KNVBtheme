@@ -21,7 +21,7 @@ knvb_pal <- function() {
 #' @rdname scale_knvb
 #' @export
 scale_colour_knvb <- function(...) {
-  ggplot2::discrete_scale("colour", "economist", knvb_pal(), ...)
+  ggplot2::discrete_scale("colour", "knvb", knvb_pal(), ...)
 }
 
 #' @rdname scale_knvb
@@ -31,5 +31,5 @@ scale_color_knvb <- scale_colour_knvb
 #' @rdname scale_knvb
 #' @export
 scale_fill_knvb <- function(...) {
-  ggplot2::discrete_scale("fill", "economist", knvb_pal(), ...)
+  ggplot2::discrete_scale("fill", "knvb", knvb_pal(), ...)
 }
