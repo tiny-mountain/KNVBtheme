@@ -2,6 +2,7 @@
 
 .onLoad <- function(libname, pkgname){
 
+  showtext::showtext_opts(dpi = 300)
   showtext::showtext_auto()
 
   font <- system.file("font", package = "KNVBtheme") %>% list.files(full.names = T)
