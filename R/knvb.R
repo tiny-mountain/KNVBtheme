@@ -75,16 +75,26 @@ theme_knvb <- function(base_size = 12,
       axis.ticks = ggplot2::element_blank(),
 
       # modify the bottom margins of the title and subtitle
-      plot.title = ggplot2::element_text(family = "Baron_Bold",
-                                         size = ggplot2::rel(2),
-                                         colour = "#3C3C3C",
-                                         hjust = 0,
-                                         margin = ggplot2::margin(b = 10)),
-      plot.subtitle = ggplot2::element_text(family = "Baron_Book",
-                                            size = ggplot2::rel(1.5),
-                                            colour = "#A0A0A3",
-                                            hjust = 0,
-                                            margin = ggplot2::margin(b = 10)),
+      plot.title = ggplot2::element_text(
+        family = "Baron_Bold",
+        size = ggplot2::rel(2),
+        colour = "#3C3C3C",
+        hjust = 0,
+        margin = ggplot2::margin(b = 10)
+      ),
+      plot.subtitle = ggplot2::element_text(
+        family = "Baron_Book",
+        size = ggplot2::rel(1.5),
+        colour = "#808082",
+        hjust = 0,
+        margin = ggplot2::margin(b = 10)
+      ),
+
+      plot.caption = ggplot2::element_text(
+        family = "Baron_Light",
+        size = ggplot2::rel(.92),
+        hjust = 1
+      ),
 
       # adjust legend
       legend.position = "top",
@@ -99,7 +109,7 @@ theme_knvb <- function(base_size = 12,
       legend.box.spacing =  grid::unit(0.25, "cm"),
       legend.spacing.x =  grid::unit(0.25, "cm"),
 
-      legend.text = ggplot2::element_text(size = ggplot2::rel(.9),
+      legend.text = ggplot2::element_text(size = ggplot2::rel(.92),
                                           color = "#3C3C3C"),
       legend.title = ggplot2::element_text(size = ggplot2::rel(1),
                                            color = "#3C3C3C"),
@@ -126,7 +136,7 @@ theme_knvb <- function(base_size = 12,
                                            colour = "#3C3C3C",
                                            margin = ggplot2::margin(r = 10),
                                            angle = 90),
-      axis.text = ggplot2::element_text(size = ggplot2::rel(.9), colour = "#3C3C3C"))
+      axis.text = ggplot2::element_text(size = ggplot2::rel(.96), colour = "#3C3C3C"))
 
 
 
