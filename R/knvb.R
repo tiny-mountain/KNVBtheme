@@ -5,14 +5,12 @@
 #' @usage
 #' theme_knvb(
 #'            base_size = 12,
-#'            base_family = "Baron_Book",
 #'            y_grid = T,
 #'            x_grid = T,
 #'            ...
 #' )
 #'
 #' @param base_size base font size, given in pts.
-#' @param base_family base font family
 #' @param y_grid logical. Indicate whether you want to draw major and minor
 #'   y-axis grid lines
 #' @param x_grid logical. Indicate whether you want to draw major and minor
@@ -48,13 +46,11 @@
 #'
 
 theme_knvb <- function(base_size = 12,
-                       base_family = "Baron_Book",
                        y_grid = T,
                        x_grid = T,
                        ...){
 
   ret <- ggplot2::theme_grey(base_size = base_size,
-                             base_family = base_family,
                              ...) %+replace%
     ggplot2::theme(
 
@@ -76,14 +72,12 @@ theme_knvb <- function(base_size = 12,
 
       # modify the bottom margins of the title and subtitle
       plot.title = ggplot2::element_text(
-        family = "Baron_Bold",
         size = ggplot2::rel(2),
         colour = "#3C3C3C",
         hjust = 0,
         margin = ggplot2::margin(b = 10)
       ),
       plot.subtitle = ggplot2::element_text(
-        family = "Baron_Book",
         size = ggplot2::rel(1.5),
         colour = "#808082",
         hjust = 0,
@@ -91,7 +85,6 @@ theme_knvb <- function(base_size = 12,
       ),
 
       plot.caption = ggplot2::element_text(
-        family = "Baron_Light",
         size = ggplot2::rel(.92),
         hjust = 1
       ),
@@ -127,11 +120,11 @@ theme_knvb <- function(base_size = 12,
       strip.placement = "outside",
 
       # Adjust text size and axis title position
-      axis.title.x = ggplot2::element_text(family = "Baron_Bold",
+      axis.title.x = ggplot2::element_text(
                                            size = ggplot2::rel(1.2),
                                            colour = "#3C3C3C",
                                            margin = ggplot2::margin(t = 5)),
-      axis.title.y = ggplot2::element_text(family = "Baron_Bold",
+      axis.title.y = ggplot2::element_text(
                                            size = ggplot2::rel(1.2),
                                            colour = "#3C3C3C",
                                            margin = ggplot2::margin(r = 10),

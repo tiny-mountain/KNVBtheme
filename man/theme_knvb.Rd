@@ -6,7 +6,6 @@
 \usage{
 theme_knvb(
            base_size = 12,
-           base_family = "Baron_Book",
            y_grid = T,
            x_grid = T,
            ...
@@ -14,8 +13,6 @@ theme_knvb(
 }
 \arguments{
 \item{base_size}{base font size, given in pts.}
-
-\item{base_family}{base font family}
 
 \item{y_grid}{logical. Indicate whether you want to draw major and minor
 y-axis grid lines}
