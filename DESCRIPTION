@@ -9,14 +9,18 @@ Authors@R: c(
     person(given = "Jan", 
            family = "Verbeek",
            email = "jan.verbeek@knvb.nl",
-           role = c("ctb"))
+           role = c("aut", "ctb")),
+    person(given = "Maj", 
+           family = "Olde Benneker",
+           email = "maj.oldebenneker@knvb.nl",
+           role = c("aut", "ctb"))
            )
 Description: Customize plots in R with unofficial KNVB theme by providing KNVB 
     color palette, fonts and general style.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
+RoxygenNote: 7.3.2
 Imports: 
     dplyr,
     ggplot2,
