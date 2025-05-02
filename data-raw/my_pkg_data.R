@@ -1,44 +1,25 @@
 ## code to prepare `my_pkg_data` dataset goes here
 knvb_cols <- data.frame(
   name = c(
-    "donkeroranje_nieuw_0",
-    "donkerblauw_0",
-    "turkoois_0",
-    "donkeroranje_nieuw_1",
-    "donkerblauw_1",
-    "turkoois_1",
-    "donkeroranje_1",
-    "licht_grijs",
-    "turkoois_5",
-    "donkeroranje_0",
-    "blauw_0",
-    "donkeroranje_nieuw_5",
-    "donkerblauw_5",
-    "donkeroranje_5",
-    "white",
-    "groen",
-    "rood",
-    "donker_grijs"
+    "oranje_1",
+    "mistwhite_1",
+    "groenblauw_1",
+    "groen_blauw_2",
+    "oranje_2",
+    "mistwhite_2",
+    "oranje_3",
+    "mistwhite_3"
   ),
   value = c(
-    "#eb6209",
-    "#253780",
-    "#00AADB",
-    "#f39655",
-    "#C9D1F0",
-    "#C5F2FF",
-    "#bd4a0a",
-    "#F2F2F2",
-    "#00556D",
-    "#F36C21",
-    "#00a5db",
-    "#fac59e",
-    "#131B40",
-    "#f79c6a",
-    "#ffffff",
-    "#008000",
-    "#ff0000",
-    "#7F7F7F"
+    "#ff6000",
+    "#AFD5D2",
+    "#2C7075",
+    "#66AAA2",
+    "#F9843C",
+    "#CAE3E1",
+    "#F3A874",
+    "#D8EBE6"
+
   )
 )
 

@@ -6,7 +6,7 @@
 #' @export
 knvb_pal <- function() {
   values <- KNVBtheme::knvb_cols$value
-  max_n <- 9
+  max_n <- 8
   f <- scales::manual_pal(values)
   attr(f, "max_n") <- max_n
   f

@@ -9,7 +9,7 @@ mtcars2 <- within(mtcars, {
 })
 
 p1 <- ggplot(mtcars2) +
-  geom_point(aes(x = wt, y = mpg, colour = gear)) +
+  geom_point(aes(x = wt, y = mpg, colour = gear), size = 2.5) +
   labs(
     title = "Fuel economy declines as weight increases",
     subtitle = "(1973-74)",
@@ -19,10 +19,15 @@ p1 <- ggplot(mtcars2) +
     colour = "Gears"
   )
 
-# Prepare data: count number of cars by cylinder
-bar_data <- mtcars %>%
-  dplyr::count(cyl) %>%
-  dplyr::mutate(cyl = as.factor(cyl))
+# Count number of cars by cylinder
+bar_data <- as.data.frame(table(mtcars$cyl))
+
+# Rename columns for clarity
+names(bar_data) <- c("cyl", "n")
+
+# Make sure 'cyl' is a factor (it already is in table(), but this ensures it)
+bar_data$cyl <- as.factor(bar_data$cyl)
+
 
 # Basic bar chart
 p2 <- ggplot(bar_data, aes(x = cyl, y = n, fill = cyl)) +
@@ -36,9 +41,7 @@ p2 <- ggplot(bar_data, aes(x = cyl, y = n, fill = cyl)) +
 
 
 
-theme_knvb <- function(base_size = 12,
-                       y_grid = T,
-                       x_grid = T,
+theme_knvb <- function(base_size = 11,
                        ...){
 
   ret <- ggplot2::theme_grey(base_size = base_size,
@@ -69,7 +72,7 @@ theme_knvb <- function(base_size = 12,
         size = ggplot2::rel(1.75),
         colour = "black",
         hjust = 0,
-        margin = ggplot2::margin(b = 2.5, unit = "pt")
+        margin = ggplot2::margin(b = 10, unit = "pt")
       ),
       plot.subtitle = ggplot2::element_text(
         size = ggplot2::rel(1.35),
@@ -116,38 +119,29 @@ theme_knvb <- function(base_size = 12,
       axis.title.x = ggplot2::element_text(
         size = ggplot2::rel(1.2),
         colour = "black",
-        margin = ggplot2::margin(t = -10)
+        margin = ggplot2::margin(t = 10)
       ),
       axis.title.y = ggplot2::element_text(
         size = ggplot2::rel(1.2),
         colour = "black",
-        margin = ggplot2::margin(r = -10),
+        margin = ggplot2::margin(r = 15),
         angle = 90
       ),
       axis.text = ggplot2::element_text(size = ggplot2::rel(1.1), colour = "gray60")
     )
 
-  #
-  #
-  # if(y_grid == F){
-  #   ret <- ret + ggplot2::theme(
-  #     panel.grid.major.y = ggplot2::element_blank(),
-  #     panel.grid.minor.y = ggplot2::element_blank()
-  #   )
-  # }
-  # if(x_grid == F){
-  #   ret <- ret + ggplot2::theme(
-  #     panel.grid.major.x = ggplot2::element_blank(),
-  #     panel.grid.minor.x = ggplot2::element_blank()
-  #   )
-  # }
-
   return(ret)
 }
 
 
-p1 + theme_knvb()
-p2 + theme_knvb()
+p1 +
+  theme_knvb() +
+  scale_color_knvb()
+
+
+p2 +
+  theme_knvb() +
+  scale_fill_knvb()
 
 use_data_raw(name = "tool_theme")
 

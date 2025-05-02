@@ -5,7 +5,7 @@
 \alias{knvb_cols_ls}
 \title{List with KNVB colors, used to set colors manually}
 \format{
-An object of class \code{list} of length 18.
+An object of class \code{list} of length 8.
 }
 \usage{
 knvb_cols_ls
