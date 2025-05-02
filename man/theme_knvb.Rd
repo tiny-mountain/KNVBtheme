@@ -5,20 +5,12 @@
 \title{KNVB theme}
 \usage{
 theme_knvb(
-           base_size = 12,
-           y_grid = T,
-           x_grid = T,
+           base_size = 11,
            ...
 )
 }
 \arguments{
 \item{base_size}{base font size, given in pts.}
-
-\item{y_grid}{logical. Indicate whether you want to draw major and minor
-y-axis grid lines}
-
-\item{x_grid}{logical. Indicate whether you want to draw major and minor
-x-axis grid lines}
 
 \item{...}{potential further arguments passed to \code{\link[=theme_grey]{theme_grey()}}}
 }

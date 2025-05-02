@@ -4,17 +4,11 @@
 #'   research department.
 #' @usage
 #' theme_knvb(
-#'            base_size = 12,
-#'            y_grid = T,
-#'            x_grid = T,
+#'            base_size = 11,
 #'            ...
 #' )
 #'
 #' @param base_size base font size, given in pts.
-#' @param y_grid logical. Indicate whether you want to draw major and minor
-#'   y-axis grid lines
-#' @param x_grid logical. Indicate whether you want to draw major and minor
-#'   x-axis grid lines
 #' @param ... potential further arguments passed to [theme_grey()]
 #'
 #' @importFrom ggplot2 %+replace%
@@ -45,9 +39,8 @@
 #' @export
 #'
 
-theme_knvb <- function(base_size = 12,
-                       y_grid = T,
-                       x_grid = T,
+
+theme_knvb <- function(base_size = 11,
                        ...){
 
   ret <- ggplot2::theme_grey(base_size = base_size,
@@ -55,43 +48,45 @@ theme_knvb <- function(base_size = 12,
     ggplot2::theme(
 
       # add margin around plot
-      plot.margin = grid::unit(rep(0.5, 4), "cm"),
+      plot.margin = grid::unit(rep(10, 4), "pt"),
 
       # set size and color of grid lines
-      panel.grid.major = ggplot2::element_line(color = "gray60", size = 0.25),
-      panel.grid.minor = ggplot2::element_line(color = "gray65", size = 0.1),
+      panel.grid.major = ggplot2::element_line(color = "gray65", linewidth = 0.25),
+      panel.grid.minor = ggplot2::element_blank(),
+
+      # set size and color of axis.lines
+      axis.line.x = ggplot2::element_line(color = "gray30", linewidth = ggplot2::rel(1.25)),
+      axis.line.y = ggplot2::element_line(color = "gray30", linewidth = ggplot2::rel(1.25)),
+
+      axis.ticks = ggplot2::element_line(color = "gray65", linewidth = 0.25),
+      axis.ticks.length = grid::unit(15, "pt"),
 
       # adjust panel background  and remove border
       panel.background =  ggplot2::element_rect(fill = "transparent", color = NA),
       panel.border = ggplot2::element_blank(),
       panel.ontop = F,
 
-      # set axis lines and remove ticks
-      axis.line = ggplot2::element_line(color = "#3C3C3C", size = 0.5),
-      axis.ticks = ggplot2::element_blank(),
-
       # modify the bottom margins of the title and subtitle
       plot.title = ggplot2::element_text(
-        size = ggplot2::rel(2),
-        colour = "#3C3C3C",
+        size = ggplot2::rel(1.75),
+        colour = "black",
         hjust = 0,
-        margin = ggplot2::margin(b = 10)
+        margin = ggplot2::margin(b = 10, unit = "pt")
       ),
       plot.subtitle = ggplot2::element_text(
-        size = ggplot2::rel(1.5),
-        colour = "#808082",
+        size = ggplot2::rel(1.35),
+        colour = "black",
         hjust = 0,
-        margin = ggplot2::margin(b = 10)
+        margin = ggplot2::margin(b = 10, unit = "pt")
       ),
 
       plot.caption = ggplot2::element_text(
-        size = ggplot2::rel(.92),
+        size = ggplot2::rel(1),
         hjust = 1
       ),
 
       # adjust legend
       legend.position = "top",
-      legend.direction = "horizontal",
       legend.background = ggplot2::element_blank(),
 
       legend.key = ggplot2::element_rect(fill = "transparent",
@@ -99,13 +94,13 @@ theme_knvb <- function(base_size = 12,
 
       legend.title.align = 1,
       legend.box.just = "left",
-      legend.box.spacing =  grid::unit(0.25, "cm"),
-      legend.spacing.x =  grid::unit(0.25, "cm"),
+      legend.box.spacing =  grid::unit(2.5, "pt"),
+      #legend.spacing.x =  grid::unit(0.25, "cm"),
 
-      legend.text = ggplot2::element_text(size = ggplot2::rel(.92),
-                                          color = "#3C3C3C"),
-      legend.title = ggplot2::element_text(size = ggplot2::rel(1),
-                                           color = "#3C3C3C"),
+      legend.text = ggplot2::element_text(size = ggplot2::rel(1),
+                                          color = "grey40"),
+      legend.title = ggplot2::element_text(size = ggplot2::rel(1.1),
+                                           color = "black"),
       # # #legend.text.align = 1,
       # legend.text = element_text(lineheight = 10,
       #                             size = rel(.8),
@@ -114,37 +109,25 @@ theme_knvb <- function(base_size = 12,
       # legend.title = element_text(lineheight = 2.5,
       #                              size = rel(1)),
 
-      # strip background
+      # facet labels
       strip.background = ggplot2::element_rect(fill = "transparent",
                                                color = NA),
       strip.placement = "outside",
 
       # Adjust text size and axis title position
       axis.title.x = ggplot2::element_text(
-                                           size = ggplot2::rel(1.2),
-                                           colour = "#3C3C3C",
-                                           margin = ggplot2::margin(t = 5)),
+        size = ggplot2::rel(1.2),
+        colour = "black",
+        margin = ggplot2::margin(t = 10)
+      ),
       axis.title.y = ggplot2::element_text(
-                                           size = ggplot2::rel(1.2),
-                                           colour = "#3C3C3C",
-                                           margin = ggplot2::margin(r = 10),
-                                           angle = 90),
-      axis.text = ggplot2::element_text(size = ggplot2::rel(.96), colour = "#3C3C3C"))
-
-
-
-  if(y_grid == F){
-    ret <- ret + ggplot2::theme(
-      panel.grid.major.y = ggplot2::element_blank(),
-      panel.grid.minor.y = ggplot2::element_blank()
+        size = ggplot2::rel(1.2),
+        colour = "black",
+        margin = ggplot2::margin(r = 15),
+        angle = 90
+      ),
+      axis.text = ggplot2::element_text(size = ggplot2::rel(1.1), colour = "gray60")
     )
-  }
-  if(x_grid == F){
-    ret <- ret + ggplot2::theme(
-      panel.grid.major.x = ggplot2::element_blank(),
-      panel.grid.minor.x = ggplot2::element_blank()
-    )
-  }
 
   return(ret)
 }
